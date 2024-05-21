@@ -5,8 +5,8 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 Try running some of the following tasks:
 
 ```shell
-npm install --save @nomicfoundation/hardhat-toolbox@^2.0.2
-npm install --save hardhat@2.13.0
+npm install --save-dev hardhat@2.13.0
+npm install --save-dev @nomicfoundation/hardhat-toolbox@^2.0.2
 npx hardhat --version
 npx hardhat help
 npx hardhat test
