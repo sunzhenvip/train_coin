@@ -63,6 +63,7 @@ module.exports = {
     // You should run a client (like ganache, geth, or parity) in a separate terminal
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
+    // 8545的本地网络可以执行这个命令 npx ganache-cli
     // 执行改命令可以部署此网络 npx truffle migrate --network development
     development: {
      host: "127.0.0.1",     // Localhost (default: none)
