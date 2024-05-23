@@ -27,6 +27,7 @@ async function main() {
   await writeAbiAddr(Artifact, lock.address, "Lock", network.name);
 
   console.log(`Please verify: npx hardhat verify ${lock.address}`);
+  // 分两次
 }
 
 main()
