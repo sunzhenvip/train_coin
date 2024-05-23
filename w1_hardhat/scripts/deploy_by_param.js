@@ -27,13 +27,6 @@ async function main() {
   await writeAbiAddr(Artifact, lock.address, "Lock", network.name);
 
   console.log(`Please verify: npx hardhat verify ${lock.address}`);
-
-
-  // let Artifact = await artifacts.readArtifact("Lock");
-  // await writeAbiAddr(Artifact, counter.address, "Lock", network.name);
-
-  // console.log(`Please verify: npx hardhat verify ${counter.address}`);
-
 }
 
 main()
