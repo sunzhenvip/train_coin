@@ -9,12 +9,15 @@ const PRIVATEKEY = process.env.PRIVATEKEY
 module.exports = {
   solidity: "0.8.18",
   networks: {
-    hardhat: {
+    // npx hardhat run ./scripts/deploy.js --network localdev
+    localdev: {
+      url: "http://127.0.0.1:8545",
       chainId: 31337,
       gas: 12000000,
-      accounts: {
-        // mnemonic: mnemonic,
-      },
+      accounts:["0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d"],
+      // accounts: {
+      //   // mnemonic: mnemonic,
+      // },
     },
     goerli: {
       url: "https://eth-goerli.api.onfinality.io/public",
