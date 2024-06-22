@@ -1,10 +1,24 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("./task/balance.js");
 // 导入该包需要 安装 dotenv库
 const dotenv = require('dotenv')
 dotenv.config({ path: "./.env" })
 
 const API_KEY = process.env.INFURA_API_KEY
 const PRIVATEKEY = process.env.PRIVATEKEY
+
+
+// This is a sample Hardhat task. To learn how to create your own go to
+// https://hardhat.org/guides/create-task.html
+task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+  const accounts = await hre.ethers.getSigners();
+  console.log("x123123");
+
+  for (const account of accounts) {
+    console.log(account.address);
+  }
+});
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.18",
