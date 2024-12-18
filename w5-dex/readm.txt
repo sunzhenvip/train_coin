@@ -1,3 +1,4 @@
 
 w5-3
+    1、结合 uniswap中v2-core、v2-periphery一起配置使用才可以
     2、使用deploy_market.js脚本通过合约添加流动性与购买
