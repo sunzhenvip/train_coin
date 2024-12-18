@@ -1,2 +1,6 @@
-build/
 node_modules/
+build/
+artifacts/
+cache/
+package-lock.json
+yarn.lock
