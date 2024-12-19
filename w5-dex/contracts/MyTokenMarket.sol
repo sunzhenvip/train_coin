@@ -40,7 +40,7 @@ contract MyTokenMarket {
         address[] memory path = new address[](2);
         path[0] = weth;
         path[1] = myToken;
-
+        // 1、swapExactETHForTokens 第一种兑换方式 2、第二种在池子里面交互 UniswapV2Pair
         IUniswapV2Router01(router).swapExactETHForTokens{value : msg.value}(minTokenAmount, path, msg.sender, block.timestamp);
     }
 
