@@ -7,6 +7,9 @@ import "./IMasterChef.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
+/**
+   通过合约添加流动性与购买
+*/
 contract MyTokenMarket {
     using SafeERC20 for IERC20;
 
