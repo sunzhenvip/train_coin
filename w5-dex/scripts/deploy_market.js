@@ -51,6 +51,8 @@ async function main() {
     await market.deployed();
     console.log("market:" + market.address);
 
+    // 调用者账户 给 指定账户 账户授权 `amount`数量代币
+    // 用户授权指定合约地址，允许合约代表用户从用户的账户中转账最多 tokenAmount 个代币。
     await atoken.approve(market.address, ethers.constants.MaxUint256);
 
     let ethAmount = ethers.utils.parseUnits("100", 18);
