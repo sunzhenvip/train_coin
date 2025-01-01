@@ -6,6 +6,8 @@ import "./math/SafeMath.sol";
 import "./utils/Context.sol";
 import "./IERC20.sol";
 
+// 我的质押 2.0000 FC2N  可用的 98.0012 FC2N
+// 奖励 1.01 C2N
 contract C2NToken is Context, IERC20 {
     using SafeMath for uint256;
 

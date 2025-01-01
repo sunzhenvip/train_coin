@@ -9,6 +9,7 @@ import "@openzeppelin/contracts/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
+//
 contract C2NSale is ReentrancyGuard {
     using ECDSA for bytes32;
     using SafeMath for uint256;
@@ -20,7 +21,7 @@ contract C2NSale is ReentrancyGuard {
     ISalesFactory public factory;
     // Admin contract
     IAdmin public admin;
-
+    // 销售属性
     struct Sale {
         // Token being sold
         IERC20 token;
