@@ -6,6 +6,10 @@ import "./math/SafeMath.sol";
 import "./utils/Context.sol";
 import "./IERC20.sol";
 
+// 1. Farm 流程需要用到我们的Erc20测试代币C2N, 可以在首页领取C2E(一个账户只能领取一次),
+// 2. 并且添加到我们metamask，添加之后我们可以在metamask 看到我们领取的C2E 代币
+// 3. 在我们 farm 界面，我们可以质押fC2E 代币获取C2E, (方便大家操作，我们的测试网fC2E，C2E 是在上一步中领取的同一代币)，
+// 4. 在这里我们有三个操作，stake:质押，unstake(witthdraw):撤回质押， 以及 claim:领取奖励;
 // 我的质押 2.0000 FC2N  可用的 98.0012 FC2N
 // 奖励 1.01 C2N
 contract C2NToken is Context, IERC20 {
