@@ -126,6 +126,7 @@ contract AllocationStaking is OwnableUpgradeable {
 
     // Add a new lp to the pool. Can only be called by the owner.
     // DO NOT add the same LP token more than once. Rewards will be messed up if you do.
+    // 添加新的池子 池子占多少份额的奖励 这个池子质押那一种代币
     function add(uint256 _allocPoint, IERC20 _lpToken, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
