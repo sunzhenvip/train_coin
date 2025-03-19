@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 //
 // Cloned from https://github.com/SashimiProject/sashimiswap/blob/master/contracts/MasterChef.sol
 // Modified by LTO Network to work for non-mintable ERC20.
-
+// 质押挖矿合约
 contract FarmingC2N is Ownable {
 
     using SafeMath for uint256;

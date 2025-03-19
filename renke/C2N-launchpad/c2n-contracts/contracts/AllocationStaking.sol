@@ -7,6 +7,8 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "./interfaces/ISalesFactory.sol";
 
+// 质押挖矿合约
+
 contract AllocationStaking is OwnableUpgradeable {
 
     using SafeMath for uint256;
