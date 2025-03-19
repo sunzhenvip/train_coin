@@ -4,7 +4,7 @@ pragma solidity 0.6.12;
 import "../interfaces/IAdmin.sol";
 import "./C2NSale.sol";
 
-
+// 有很多个项目方 所以使用工厂模式 给每个项目方创建一个C2NSale合约
 contract SalesFactory {
 
     IAdmin public admin;
