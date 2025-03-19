@@ -15,6 +15,7 @@ contract AllocationStaking is OwnableUpgradeable {
     using SafeERC20 for IERC20;
 
     // Info of each user.
+    // 用户信息
     struct UserInfo {
         uint256 amount;     // How many LP tokens the user has provided.
         uint256 rewardDebt; // Reward debt. Current reward debt when user joined farm. See explanation below.
@@ -29,16 +30,23 @@ contract AllocationStaking is OwnableUpgradeable {
         //   2. User receives the pending reward sent to his/her address.
         //   3. User's `amount` gets updated.
         //   4. User's `rewardDebt` gets updated.
+        // 如果用户注册出售，则在代币解锁时返回
         uint256 tokensUnlockTime; // If user registered for sale, returns when tokens are getting unlocked
+        // 售卖的参与这个是售卖的注册就是在i do流程里面 售卖的参与这个是售卖的注册就是在i do流程里面
         address [] salesRegistered;
     }
 
     // Info of each pool.
+    // 池子信息
     struct PoolInfo {
-        IERC20 lpToken;             // Address of LP token contract.
+        IERC20 lpToken;             // Address of LP token contract.质押什么样的代币 可能质押的是cn2-lp 代币
+        // 分配的份额多少
         uint256 allocPoint;         // How many allocation points assigned to this pool. ERC20s to distribute per block.
+        // 这个就是上一次奖励的时间
         uint256 lastRewardTimestamp;    // Last timstamp that ERC20s distribution occurs.
+        // 这个是一个单位token  它获取了一个奖励 例如 一秒钟获取多少奖励
         uint256 accERC20PerShare;   // Accumulated ERC20s per share, times 1e36.
+        // 然后total deposit就是总共的一个存款
         uint256 totalDeposits; // Total amount of tokens deposited at the moment (staked)
     }
 
