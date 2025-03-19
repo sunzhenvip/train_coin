@@ -146,6 +146,7 @@ contract AllocationStaking is OwnableUpgradeable {
     }
 
     // Update the given pool's ERC20 allocation point. Can only be called by the owner.
+    // 设置奖励速率
     function set(uint256 _pid, uint256 _allocPoint, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
