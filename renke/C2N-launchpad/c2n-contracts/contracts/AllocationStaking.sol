@@ -116,6 +116,7 @@ contract AllocationStaking is OwnableUpgradeable {
     }
 
     // Fund the farm, increase the end block
+    // 注入奖励资金
     function fund(uint256 _amount) public {
         require(block.timestamp < endTimestamp, "fund: too late, the farm is closed");
         erc20.safeTransferFrom(address(msg.sender), address(this), _amount);
