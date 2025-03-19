@@ -388,18 +388,18 @@ contract C2NSale is ReentrancyGuard {
         bytes memory signature,
         uint256 amount
     ) external payable {
-
+        // 第一个校验就是你要买的这些代币数量不能超过它总共项目方发放的这个代币数量
         require(
             amount <= sale.maxParticipation,
             "Overflowing maximal participation for sale."
         );
-
+        // 然后就是注册你当前这个用户是注是是已经注册过 就是那个kyc注册的一个校验
         // User must have registered for the round in advance
         require(
             isRegistered[msg.sender],
             "Not registered for this sale."
         );
-
+        // 然后就是验签
         // Verify the signature
         require(
             checkParticipationSignature(
@@ -409,7 +409,7 @@ contract C2NSale is ReentrancyGuard {
             ),
             "Invalid signature. Verification failed"
         );
-
+        // 时间判断有没有在这个项目方开启售卖到结束售卖的这段时间之内
         // Verify the timestamp
         require(
             block.timestamp >= sale.saleStart &&
@@ -422,6 +422,7 @@ contract C2NSale is ReentrancyGuard {
         // Disallow contract calls.
         require(msg.sender == tx.origin, "Only direct contract calls.");
 
+        // 计算你这个这次买的一个数量
         // Compute the amount of tokens user is buying
         uint256 amountOfTokensBuying =
         (msg.value).mul(uint(10) ** IERC20Metadata(address(sale.token)).decimals()).div(sale.tokenPriceInETH);
@@ -430,15 +431,18 @@ contract C2NSale is ReentrancyGuard {
         require(amountOfTokensBuying > 0, "Can't buy 0 tokens");
 
         // Check in terms of user allo
+        //
         require(
             amountOfTokensBuying <= amount,
             "Trying to buy more than allowed."
         );
 
         // Increase amount of sold tokens
+        // 记录一下现在已经现在已经卖出了多少
         sale.totalTokensSold = sale.totalTokensSold.add(amountOfTokensBuying);
 
         // Increase amount of ETH raised
+        // 然后记录一下eth已经筹集到了多少就是
         sale.totalETHRaised = sale.totalETHRaised.add(msg.value);
 
         bool[] memory _isPortionWithdrawn = new bool[](
@@ -446,6 +450,7 @@ contract C2NSale is ReentrancyGuard {
         );
 
         // Create participation object
+        // 然后更新一下这个参与售卖的一个信息
         Participation memory p = Participation({
         amountBought : amountOfTokensBuying,
         amountETHPaid : msg.value,
@@ -454,6 +459,7 @@ contract C2NSale is ReentrancyGuard {
         });
 
         // Add participation for user.
+        // 记录一下参与售卖的一个信息
         userToParticipation[msg.sender] = p;
         // Mark user is participated
         isParticipated[msg.sender] = true;
@@ -464,6 +470,7 @@ contract C2NSale is ReentrancyGuard {
     }
 
     /// Users can claim their participation
+    // 就是说这个结束以后 这个售卖结束以后把你买的币转转到你的一个账上 所以它用前面记录到的这个信息
     function withdrawTokens(uint256 portionId) external {
         require(
             block.timestamp >= sale.tokensUnlockTime,
@@ -473,7 +480,7 @@ contract C2NSale is ReentrancyGuard {
             portionId < vestingPercentPerPortion.length,
             "Portion id out of range."
         );
-
+        // 所以它用前面记录到的这个信息，这个p  这个信息去进行一个转账
         Participation storage p = userToParticipation[msg.sender];
 
         if (
