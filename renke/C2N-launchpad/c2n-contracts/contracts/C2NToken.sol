@@ -6,6 +6,8 @@ import "./math/SafeMath.sol";
 import "./utils/Context.sol";
 import "./IERC20.sol";
 
+
+// C2NToken 表示平台代币
 contract C2NToken is Context, IERC20 {
     using SafeMath for uint256;
 
