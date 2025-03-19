@@ -156,12 +156,14 @@ contract AllocationStaking is OwnableUpgradeable {
     }
 
     // View function to see deposited LP for a user.
+    // 查看当前用户质押了多少代币
     function deposited(uint256 _pid, address _user) public view returns (uint256) {
         UserInfo storage user = userInfo[_pid][_user];
         return user.amount;
     }
 
     // View function to see pending ERC20s for a user.
+    // 用户a他去存款或取或者取款 就会触发这个pending 查看它当前的一个奖励
     function pending(uint256 _pid, address _user) public view returns (uint256) {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][_user];
@@ -237,6 +239,7 @@ contract AllocationStaking is OwnableUpgradeable {
     }
 
     // Deposit LP tokens to Farm for ERC20 allocation.
+    // 质押充值
     function deposit(uint256 _pid, uint256 _amount) public {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
