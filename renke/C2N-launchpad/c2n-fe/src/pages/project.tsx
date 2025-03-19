@@ -382,6 +382,8 @@ export default function Pool({ Component, pageProps }: AppProps) {
     f.append('contractAddress', saleAddress);
     // FIXME: get Participate amount
     f.append('amount', allocationTop);
+    // 签名信息 用户钱包地址、合约地址(项目方出售代币的一个合约地址)、数量amount(用户参与购买的数量) 那这些东西去做一个签名 签名之后得到一个字符串
+    // 调用的就是后端的接口 java 后端这个签名做的
     return axios.post('/boba/encode/sign_participation', f)
       .then((response) => {
         let data = response.data;
@@ -527,6 +529,7 @@ export default function Pool({ Component, pageProps }: AppProps) {
     /**
      * 购买代币
      * 设置足够的代币授权，后面在withdraw时，会自动扣除相应的代币
+     * getParticipateSign 这是一个签名
      */
     return approve(saleAddress, Number(ethers.utils.formatUnits(paymentAmount, depositDecimals)), depositDecimals)
       .then(getParticipateSign)

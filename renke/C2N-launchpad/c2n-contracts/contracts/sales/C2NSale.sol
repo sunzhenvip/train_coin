@@ -379,6 +379,11 @@ contract C2NSale is ReentrancyGuard {
     }
 
     // Function to participate in the sales
+    // 这里就是用户去购买代参与售卖  然后去参与售卖去购买合约代币  它如果被外部外部人调用的话
+    // 这个mount就是这个用户能买多少项目方的代币  这个mount其实是根据能买多少权益得来的 是根据你前面质押获得的这个权益得来的
+    // 这个权益没有放在链上 外部去调用合约 amount对应的代币代币转给你
+    // 所以如果如果你没有参与 如果你没有相应的权益 你直接调用这个的话 调这个方法购买项目方的方项目方代币的方法
+    // 这里在调这个方法的时候就要进行一个验签
     function participate(
         bytes memory signature,
         uint256 amount
