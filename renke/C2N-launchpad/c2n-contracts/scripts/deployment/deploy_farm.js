@@ -3,7 +3,7 @@ const {saveContractAddress, getSavedContractAddresses} = require('../utils')
 const {ethers} = require("hardhat");
 
 async function main() {
-    const RPS = "1";
+    const RPS = "1"; // 每秒的一个奖励的一个产生速率
     const timestamp = Math.floor(Date.now() / 1000) + 100;
     console.log("当前时间增加100秒", timestamp);
     // const startTS= 1742482160; // 当前时间增加个100秒左右
