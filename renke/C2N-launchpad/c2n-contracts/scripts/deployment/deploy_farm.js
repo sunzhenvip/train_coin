@@ -4,7 +4,10 @@ const {ethers} = require("hardhat");
 
 async function main() {
     const RPS = "1";
-    const startTS= 1742482160; // 当前时间增加个100秒左右
+    const timestamp = Math.floor(Date.now() / 1000) + 100;
+    console.log("当前时间增加100秒", timestamp);
+    // const startTS= 1742482160; // 当前时间增加个100秒左右
+    const startTS = timestamp; // 当前时间增加个100秒左右
     // get c2n token address from contract address file
     const c2nTokenAddress = getSavedContractAddresses()[hre.network.name]["C2N-TOKEN"];
     console.log("c2nTokenAddress: ", c2nTokenAddress)
