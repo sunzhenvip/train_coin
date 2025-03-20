@@ -29,6 +29,7 @@ async function main() {
     await tx.wait();
     // add lp token
     const lpTokenAddress = getSavedContractAddresses()[hre.network.name]["C2N-TOKEN"];
+    // 添加质押池
     await Farm.add(100, lpTokenAddress, true);
     console.log("Farm funded and LP token added");
 
