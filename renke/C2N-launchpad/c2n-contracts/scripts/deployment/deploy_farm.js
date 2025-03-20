@@ -22,6 +22,7 @@ async function main() {
     // fund the farm
     // approve the farm to spend the token
     const C2N = await hre.ethers.getContractAt("C2NToken", c2nTokenAddress);
+    // 奖励的发放要进行一个授权
     const approveTx = await C2N.approve(Farm.address, ethers.utils.parseEther('50000'));
     await approveTx.wait();
     let tx = await Farm.fund(ethers.utils.parseEther('50000'));
