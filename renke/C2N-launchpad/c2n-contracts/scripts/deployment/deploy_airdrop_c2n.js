@@ -1,6 +1,8 @@
 const hre = require("hardhat");
 const { saveContractAddress, getSavedContractAddresses} = require('../utils')
 
+
+// 空投合约的部署
 async function main() {
     // get c2n token address from contract address file
     const c2nTokenAddress =getSavedContractAddresses()[hre.network.name]["C2N-TOKEN"];
@@ -14,7 +16,9 @@ async function main() {
     saveContractAddress(hre.network.name, "Airdrop-C2N", Air.address);
     // send c2n token to airdrop contract
     const c2nToken = await hre.ethers.getContractAt("C2NToken", c2nTokenAddress);
-    let tx = await c2nToken.transfer(Air.address, ethers.utils.parseEther("10000"));
+    // 进行转账 c2n token 转账到 Air.address 这个地址上
+    let tx = await c2nToken.transfer(Air.address, ethers.utils.parseEther("10000")); // 转了1W个代币 存入到这个空投地址
+    // 然后后面用户去领空投,就是从这个空头合约转向用户,所以这里有一笔转账
     // wait for transfer
     await tx.wait();
     // get airdrop balance of c2n token
