@@ -113,7 +113,7 @@ contract MiniSwapPool is ERC20 {
     * 2. Derive output amount
     * 3. Check output against minimum requested
     * 4. Update reserves
-    * minAmountOut 控制滑点
+    * minAmountOut 控制滑点  minAmountOut这个是 表示 我最少得到这么多 否则不同意这笔交易
     */
     function swap(uint amountIn, uint minAmountOut, address fromToken, address toToken, address to) public {
         require(amountIn > 0 && minAmountOut > 0, 'Amount invalid');
