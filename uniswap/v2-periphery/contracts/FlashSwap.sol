@@ -51,7 +51,7 @@ contract FlashSwap is IUniswapV2Callee {
 
         address[] memory path = new address[](2);
         uint amountRequired ;
-
+        // 这个时候合约里面有了某一种token 这个token是从合约里面借出来的 指的是 balance0 或者 balance1
         // 收到了 token0,  兑换为 token1
         if (balance0 > 0) {
 
