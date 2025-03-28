@@ -63,6 +63,7 @@ contract FlashSwap is IUniswapV2Callee {
 
             path[0] = token0;
             path[1] = token1;
+            // 看这个 swapExactTokensForTokens 兑换能拿到多少个币
             uint[] memory amounts = IUniswapV2Router02(router2).swapExactTokensForTokens(balance0, 0, path, address(this), block.timestamp);
 
             uint amountReceived = amounts[1];
