@@ -104,6 +104,7 @@ async function main() {
   [owner]  = await ethers.getSigners();
   await deployToken();
 
+  // 添加两个不同的交易对 但是这个交易对 的代币 是相同的 用于 套利测试
   await addLiquidityOnPair1();
   await addLiquidityOnPair2();
 
