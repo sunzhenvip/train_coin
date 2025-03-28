@@ -8,6 +8,7 @@ import './interfaces/IERC20.sol';
 import './interfaces/IWETH.sol';
 
 
+// 该合约是自己定义的 如果有交易池存在差价 可以进行套利
 contract FlashSwap is IUniswapV2Callee {
     
     address immutable factory;
@@ -24,7 +25,7 @@ contract FlashSwap is IUniswapV2Callee {
     // pair1  1 A = 2 B,  pair2 1.5 A  = 2 B  
     // 从 pair1 借出来 2 个 B, 在pair2兑换 1.5A， 还回 1 个 A 给 pair1
     function flashSwap(address pair, address borrowToken) external {
-        address token0 = IUniswapV2Pair(pair).token0();
+        address token0 = IUniswapV2Pair(pair).token0(); // 当前要借的币是token0
         
         if(token0 == borrowToken) {
             IUniswapV2Pair(pair).swap(2e18, 0, address(this), new bytes(0x01));
