@@ -71,8 +71,9 @@ contract FlashSwap is IUniswapV2Callee {
             // 如果大于表示有利润 如果小于的话就没有利润 ，如果有利润才要套利 如果没有利润不套利 整个交易就失败了 当然需要支付一些gas
             require(amountReceived > amountRequired, "un profitable 1");
 
+            // 之前借的归还回去
             assert(IERC20(token1).transfer(msg.sender, amountRequired)); // return token1 to V2 pair
-
+            // 剩下部分就转给用户了 净赚的
             IERC20(token1).transfer(owner, amountReceived - amountRequired); // keep the rest! (tokens)
         }
 
