@@ -46,8 +46,8 @@ contract FlashSwap is IUniswapV2Callee {
 
         require(msg.sender == UniswapV2Library.pairFor(factory, token0, token1), "invalid caller"); // ensure that msg.sender is actually a V2 pair
 
-        uint balance0 = IERC20(token0).balanceOf(address(this));
-        uint balance1 = IERC20(token1).balanceOf(address(this));
+        uint balance0 = IERC20(token0).balanceOf(address(this)); // 判断是否持有
+        uint balance1 = IERC20(token1).balanceOf(address(this)); // 判断是否持有
 
         address[] memory path = new address[](2);
         uint amountRequired ;
