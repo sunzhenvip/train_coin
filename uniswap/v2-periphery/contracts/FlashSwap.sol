@@ -37,10 +37,11 @@ contract FlashSwap is IUniswapV2Callee {
 
 
     function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external override {
+        // 有值的token 表示 转进来的数量 所以不能都等于0
         require(amount0 == 0 || amount1 == 0, "invalid amounts"); // this strategy is unidirectional
         
         // msg.sender is pair1 
-        address token0 = IUniswapV2Pair(msg.sender).token0();
+        address token0 = IUniswapV2Pair(msg.sender).token0(); // msg.sender是回调者也就是UniswapV2Router02
         address token1 = IUniswapV2Pair(msg.sender).token1();
 
         require(msg.sender == UniswapV2Library.pairFor(factory, token0, token1), "invalid caller"); // ensure that msg.sender is actually a V2 pair
